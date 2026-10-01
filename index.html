@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>個人簡歷</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+
+<body>
+<div class="container">
+    <div class="sidebar">
+        <div class="profile">
+            <img    id="profileImage"
+                    src="image.jpg"
+                    alt="個人照片" onclick="openImage()">
+            <h2>王齡玉</h2>
+        </div>
+        <div class="side-info">
+            <h3>基本資料</h3>
+            <ul>
+                <li>姓名：王齡玉</li>
+                <li>學校：國立暨南國際大學</li>
+                <li>科系：資訊管理系</li>
+                <li>Email：mbttjues@email.com</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="geometry">
+            <div class="red-box"></div>
+            <div class="yellow-circle"></div>
+            <div class="blue-box"></div>
+            <div class="black-line"></div>
+        </div>
+        <div class="mini-player">
+            <div class="song-info">♪ 一天一天</div>
+            <audio id="audioPlayer" src="onday.mp3"></audio>
+            <input id="progressBar" class="progress-bar" type="range" min="0" max="100" value="0">
+            <div class="player-controls">
+                <button onclick="skipMusic(-10)">⏮</button>
+                <button id="playButton" class="play-button" onclick="toggleMusic()">▶</button>
+                <button onclick="skipMusic(10)">⏭</button>
+            </div>
+        </div>
+        <div class="card">
+            <h2>EDUCATION</h2>
+            <table>
+                <tr><th>時間</th><th>學校</th><th>科系</th></tr>
+                <tr><td>2024 ～ 現在</td><td>國立暨南國際大學</td><td>資訊管理系</td></tr>
+                <tr><td>2021 ～ 2024</td><td>國立宜蘭高商</td><td>資訊科</td></tr>
+            </table>
+        </div>
+        <div class="card">
+            <h2>EXPERIENCE</h2>
+
+            <div class="experience-item">
+                <h3>2024 ～ 現在｜慈濟學伴計畫｜學伴</h3>
+                <p>
+                    陪伴學生學習並協助課業問題，
+                    培養溝通能力、耐心、責任感與陪伴他人的能力。
+                </p>
+            </div>
+        </div>
+        <div class="two-column">
+            <div class="card">
+                <h2>INTERESTS</h2>
+                <ul>
+                    <li>聽音樂</li>
+                    <li>看電影</li>
+                    <li>看小說</li>
+                    <li>研究桌遊</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h2>GOALS</h2>
+                <ol>
+                    <li>順利畢業</li>
+                    <li>累積實作作品</li>
+                    <li>考上理想研究所</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="imageModal" class="image-modal" onclick="closeBackground(event)">
+    <button class="close-button" onclick="closeImage()">×</button>
+    <img id="largeImage" class="large-image" src="" alt="放大的照片">
+</div>
+</body>
+</html>

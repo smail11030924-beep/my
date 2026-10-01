@@ -1,0 +1,296 @@
+
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    padding: 40px 20px;
+    font-family: Arial, "Microsoft JhengHei", sans-serif;
+    background-color: #f2efe5;
+    color: #111;
+}
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 25px;
+}
+.sidebar {
+    position: relative;
+    padding: 30px;
+    border: 6px solid #111;
+    background-color: #111;
+    color: white;
+}
+.sidebar::before, .sidebar::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+}
+.sidebar::before {
+    width: 80px;
+    height: 80px;
+    top: -20px;
+    left: -20px;
+    background-color: #f6c900;
+}
+.sidebar::after {
+    width: 70px;
+    height: 70px;
+    right: -20px;
+    bottom: -20px;
+    background-color: #e5392d;
+}
+.profile { text-align: center; }
+.profile img {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 20px;
+    border: 8px solid #f6c900;
+    object-fit: cover;
+    cursor: pointer;
+    transition: .2s;
+}
+.profile img:hover {
+    transform: translate(-5px, -5px);
+    box-shadow: 5px 5px 0 #e5392d, 10px 10px 0 #1358a2;
+}
+.profile h1 {
+    margin: 10px 0;
+    font-size: 34px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    line-height: 1.2;
+}
+.profile h2 {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #e5392d;
+    color: white;
+    font-size: 26px;
+}
+.profile p {
+    color: #eee;
+    line-height: 1.8;
+    font-weight: bold;
+}
+.photo-tip {
+    display: inline-block;
+    margin: 8px 0 15px;
+    padding: 5px 10px;
+    background: #f6c900;
+    color: #111;
+    font-size: 12px;
+    font-weight: bold;
+}
+.side-info {
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 5px solid #f6c900;
+}
+.side-info h3 {
+    margin: 0 0 15px;
+    padding: 10px;
+    background-color: #1358a2;
+    color: white;
+    font-size: 20px;
+}
+.side-info ul { padding-left: 20px; line-height: 2; }
+.side-info li::marker { color: #f6c900; }
+.main { display: flex; flex-direction: column; gap: 25px; }
+.card {
+    position: relative;
+    padding: 25px;
+    border: 5px solid #111;
+    background-color: white;
+}
+.card::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 20px;
+    height: 70px;
+    background-color: #e5392d;
+}
+.card h2 {
+    margin-top: 0;
+    padding: 0 0 10px 30px;
+    border-bottom: 6px solid #111;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+.card p { font-size: 16px; line-height: 2; }
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+.two-column .card:first-child { background-color: #f6c900; }
+.two-column .card:last-child { background-color: #1358a2; color: white; }
+.two-column .card:last-child h2 { border-bottom-color: white; }
+table {
+    width: 100%;
+    margin-top: 20px;
+    border: 5px solid #111;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    border: 3px solid #111;
+    text-align: center;
+}
+th { background-color: #e5392d; color: white; font-size: 17px; }
+td { background-color: #f5f1e7; }
+tr:nth-child(odd) td { background-color: white; }
+ul, ol { line-height: 2; }
+li::marker { font-weight: bold; }
+.geometry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+.red-box { width: 50px; height: 50px; background-color: #e5392d; }
+.blue-box { width: 70px; height: 25px; background-color: #1358a2; }
+.yellow-circle { width: 45px; height: 45px; background-color: #f6c900; border-radius: 50%; }
+.black-line { width: 100px; height: 8px; background-color: #111; }
+.image-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .92);
+}
+.image-modal.show { display: flex; }
+.large-image {
+    max-width: 80%;
+    max-height: 80vh;
+    border: 10px solid #f6c900;
+    box-shadow: 15px 15px 0 #e5392d, -15px -15px 0 #1358a2;
+}
+.close-button {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    width: 60px;
+    height: 60px;
+    border: 5px solid white;
+    background: #e5392d;
+    color: white;
+    font-size: 38px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-button:hover { background: #f6c900; color: #111; }
+@media (max-width: 850px) {
+    .container, .two-column { grid-template-columns: 1fr; }
+    .profile img { width: 150px; height: 150px; }
+}
+
+.mini-player {
+    width: min(600px, 100%);
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 14px 18px;
+
+    background: #f5f0e6;
+    border: 3px solid #111;
+    border-radius: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    box-shadow: 8px 8px 0 #111;
+}
+
+.song-info {
+    min-width: 115px;
+    padding: 8px 12px;
+
+    background: #f4c430;
+    border: 2px solid #111;
+
+    color: #111;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.progress-bar {
+    flex: 1;
+    min-width: 80px;
+    cursor: pointer;
+
+    accent-color: #d62828;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.player-controls button {
+    width: 38px;
+    height: 38px;
+
+    border: 2px solid #111;
+    border-radius: 0;
+
+    background: #f5f0e6;
+    color: #111;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+    transition: transform .15s;
+}
+
+.player-controls button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 #111;
+}
+
+/* 上一首：藍 */
+.player-controls button:first-child {
+    background: #1d4ed8;
+    color: white;
+}
+
+/* 播放：紅色圓形 */
+.player-controls .play-button {
+    background: #d62828;
+    color: white;
+
+    border-radius: 50%;
+}
+
+/* 下一首：黃色 */
+.player-controls button:last-child {
+    background: #f4c430;
+    color: #111;
+}
+
+@media (max-width: 520px) {
+    .mini-player {
+        gap: 9px;
+        padding: 10px;
+        box-shadow: 5px 5px 0 #111;
+    }
+
+    .song-info {
+        min-width: auto;
+        font-size: 13px;
+        padding: 7px;
+    }
+
+    .player-controls button {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+    }
+}
